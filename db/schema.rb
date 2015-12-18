@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20151216151004) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "name"
+    t.string   "url"
+    t.string   "image_url"
     t.string   "authentications"
   end
 

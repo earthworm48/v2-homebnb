@@ -4,13 +4,14 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy, foreign_key: 'user_id'
   
   def self.create_with_auth_and_hash(authentication,auth_hash)
-    # byebug
+
     create! do |u|
-    byebug
+
       u.first_name = auth_hash["info"]["first_name"]
       u.last_name = auth_hash["info"]["last_name"]
       u.name = auth_hash["info"]["name"]
       u.email = auth_hash["extra"]["raw_info"]["email"]
+      u.image_url = auth_hash['info']['image']
       u.password = '12345'
       u.authentications<<(authentication)
 

@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  resource :sessions, only:[:create]
+
+  # omniauth-facebook
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+  # clearance
+
   constraints Clearance::Constraints::SignedIn.new do
     root to: 'users#index', as: :signed_in_root
   end
@@ -9,7 +16,7 @@ Rails.application.routes.draw do
     root to: 'clearance/users#new'
   end
 
-  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

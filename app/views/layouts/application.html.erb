@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-inverse" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -18,7 +18,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'HomeBnB', root_path, class: 'navbar-brand' %>
+      <%= link_to image_tag("logo.jpeg", height:50), root_path, class:"pull-left"%>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,7 +49,11 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-      <% if signed_in? %>
+
+      <% if current_user %>
+
+      <li><img src="<%= current_user.image_url%>" class="img-circle"></li>
+
       <li><%= link_to current_user.email, sign_out_path %></li>
       <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
 
@@ -68,7 +73,7 @@
                 </div>
                                 or
 
-                 <%= form_for :session, url: session_path do |form| %>
+                 <%= form_for :sessions, url: sessions_path do |form| %>
 
                     <div class="form-group">
                       <%= form.text_field :email, type: 'email',placeholder:"Email address" ,style:"width:100%;"%>
@@ -88,7 +93,15 @@
                  <%end%>
               </div>
       <%end%>
-</nav>  
+</nav>
+
+<div class='container'>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+      <%= value %>
+    </div>
+  <% end %>
+</div>
 
 <%= yield %>
 
@@ -96,8 +109,4 @@
 </html>
 
 
-<div id="flash">
-  <% flash.each do |key, value| %>
-    <div class="flash <%= key %>"><%= value %></div>
-  <% end %>
-</div>
+
