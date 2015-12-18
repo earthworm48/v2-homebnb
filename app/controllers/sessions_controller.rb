@@ -24,18 +24,16 @@ class SessionsController < Clearance::SessionsController
 
   def create
     @user = authenticate(params)
-    byebug
-    sign_in(@user) do |status|
-      byebug
-      if status.success?
+      
+      if @user
+        session[:user_id] = @user.id
         flash[:success] = "Congratulations!You have signed up!"  
-        redirect_back_or url_after_create
+        redirect_back_or root_path
       else
-        byebug
-        flash.now.warning = status.failure_message
+        flash[:danger] = "Wrong email & password combination"
         render template: "sessions/new", status: :unauthorized
       end
-    end
+
   end
 
   def show
@@ -44,6 +42,7 @@ class SessionsController < Clearance::SessionsController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, :success => "Signed out!"
+    flash[:danger] = "Signed out successfully!"
+    redirect_back_or root_path
   end
 end

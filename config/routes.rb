@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   delete "/sign_out" => "sessions#destroy", as: "sign_out_v2"
   # get "/sign_up" => "clearance/users#new", as: "sign_up"
   
-  resource :sessions, only:[:create]
+  resource :sessions, only: [:create]
 
   # omniauth-facebook
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
