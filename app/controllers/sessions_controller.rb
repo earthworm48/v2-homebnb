@@ -7,8 +7,8 @@ class SessionsController < Clearance::SessionsController
     if authentication.user
       @user = authentication.user 
       authentication.update_token(auth_hash)
-      byebug
-      session[:user] = @user.id    
+
+      session[:user_id] = @user.id    
       flash[:success] = "Welcome, #{@user.name}!"
 
       redirect_to root_path
@@ -42,4 +42,8 @@ class SessionsController < Clearance::SessionsController
     byebug
   end
 
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, :success => "Signed out!"
+  end
 end

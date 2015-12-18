@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  # clearance routes --> have to be commented out to avoid two-time-redefine
+  # resources :passwords, controller: "clearance/passwords", only: [:create, :new]
+  # resource :session, controller: "clearance/sessions", only: [:create]
+
+  # resources :users, controller: "clearance/users", only: [:create] do
+  #   resource :password,
+  #     controller: "clearance/passwords",
+  #     only: [:create, :edit, :update]
+  # end
+
+  # get "/sign_in" => "clearance/sessions#new", as: "sign_in"
+  delete "/sign_out" => "sessions#destroy", as: "sign_out_v2"
+  # get "/sign_up" => "clearance/users#new", as: "sign_up"
+  
   resource :sessions, only:[:create]
 
   # omniauth-facebook
