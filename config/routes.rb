@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  post "/users" => "users#create"
   # clearance routes --> have to be commented out to avoid two-time-redefine
   # resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   # resource :session, controller: "clearance/sessions", only: [:create]
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   #     controller: "clearance/passwords",
   #     only: [:create, :edit, :update]
   # end
-
+  root to: "users#index"
   # get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out_v2"
   # get "/sign_up" => "clearance/users#new", as: "sign_up"
@@ -20,15 +20,6 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # clearance
-
-  constraints Clearance::Constraints::SignedIn.new do
-    root to: 'users#index', as: :signed_in_root
-  end
-
-  # have to put in the clearance so it will go to the clearance controller
-  constraints Clearance::Constraints::SignedOut.new do
-    root to: 'clearance/users#new'
-  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

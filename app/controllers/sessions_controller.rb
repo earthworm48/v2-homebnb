@@ -14,7 +14,6 @@ class SessionsController < Clearance::SessionsController
       redirect_to root_path
 
     else
-
       user = User.create_with_auth_and_hash(authentication,auth_hash)
       flash[:success] = "Congratulations!You have signed up!"  
       redirect_to root_path
@@ -27,17 +26,17 @@ class SessionsController < Clearance::SessionsController
       
       if @user
         session[:user_id] = @user.id
-        flash[:success] = "Congratulations!You have signed up!"  
+        flash[:success] = "Welcome back! #{@user.name}"  
         redirect_back_or root_path
       else
         flash[:danger] = "Wrong email & password combination"
-        render template: "sessions/new", status: :unauthorized
+        redirect_back_or root_path
       end
 
   end
 
   def show
-    byebug
+
   end
 
   def destroy

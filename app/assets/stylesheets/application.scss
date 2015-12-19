@@ -19,7 +19,41 @@
     border-color:transparent;
 }
 
+#user-pic{
+  width:50px;
+  height:50px;  
+}
 
+.modal-dialog{
+    width:315px;
+}
+
+.signup-or-separator{
+    background: transparent none repeat scroll 0% 0%;
+    height: 34px;
+    position: relative;
+    text-align: center;
+}
+
+.signup-or-separator--text{
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #565A5C;
+}
+
+hr{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-width: 1px 0px 0px;
+    border-style: solid none none;
+    border-color: #DCE0E0 -moz-use-text-color -moz-use-text-color;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+}    
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;

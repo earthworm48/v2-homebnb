@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   include Clearance::User
+  validates :password, length: { minimum: 3 }
+  validates :email, uniqueness:true
 
   has_many :authentications, :dependent => :destroy, foreign_key: 'user_id'
   
