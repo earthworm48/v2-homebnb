@@ -7,7 +7,8 @@ class UsersController < Clearance::UsersController
     @user = user_from_params
     if @user.save
       sign_in @user
-      flash[:success] = "Congratulations! You have successfully sign up!"
+      session[:user_id] = @user.id
+      flash[:success] = "Congratulations #{@user.name}! You have successfully sign up!"
       redirect_back_or root_path
     else
     	array = []
@@ -24,7 +25,6 @@ class UsersController < Clearance::UsersController
 
 	def redirect_signed_in_users
 		@user = User.find_by(email:params[:user][:email])
-		byebug
     if @user
     	flash[:danger] = "The account is exist! Please login!"
       redirect_to Clearance.configuration.redirect_url

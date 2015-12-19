@@ -9,13 +9,14 @@ class SessionsController < Clearance::SessionsController
       authentication.update_token(auth_hash)
 
       session[:user_id] = @user.id    
-      flash[:success] = "Welcome, #{@user.name}!"
+      flash[:success] = "Welcome back, #{@user.name}!"
 
       redirect_to root_path
 
     else
-      user = User.create_with_auth_and_hash(authentication,auth_hash)
-      flash[:success] = "Congratulations!You have signed up!"  
+      @user = User.create_with_auth_and_hash(authentication,auth_hash)
+      session[:user_id] = @user.id 
+      flash[:success] = "Congratulations #{@user.name}! You have signed up!"  
       redirect_to root_path
     end
 
