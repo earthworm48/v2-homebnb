@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   # get "/sign_up" => "clearance/users#new", as: "sign_up"
   
   resource :sessions, only: [:create]
-
+  resource :user, only: [:edit]
+  get '/users/:id', :to => 'users#show', :as => :user
   # omniauth-facebook
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 

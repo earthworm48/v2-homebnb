@@ -1,1 +1,26 @@
-edit_user_path
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-sm-4"></div>
+    <div class="col-lg-4 col-sm-4 col-centered">
+      <h1>Edit Profile</h1>
+      <%= form_for @user do |form|%>
+          <div class="form-group">
+            <%= form.text_field :name, placeholder:"Name", style:"width:100%;" %>
+          </div>         
+          <div class="form-group">
+            <%= form.text_field :email, type: 'email', placeholder:"Email", style:"width:100%;" %>
+          </div>
+
+          <div class="form-group">
+            <%= form.password_field :password, placeholder:"Password", style:"width:100%;" %>
+          </div>
+          <div class="form-group">
+           <button type="submit" class="btn btn-primary btn-block">Done</button>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-4 col-sm-4"></div>
+  </div>
+
+</div>

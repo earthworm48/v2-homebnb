@@ -6,5 +6,6 @@ class AddColumnToUsers < ActiveRecord::Migration
     add_column :users, :url, :string
     add_column :users, :image_url, :string
     add_column :users, :authentications, :string
+    add_column :users, :location, :string
   end
 end

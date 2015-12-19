@@ -24,6 +24,9 @@
   height:50px;  
 }
 
+#user-profile-pic{
+    width:100%;
+}
 .modal-dialog{
     width:315px;
 }
@@ -53,7 +56,12 @@ hr{
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     border-image: none;
-}    
+}   
+
+.center-row{
+    max-width: 50%;
+} 
+
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;

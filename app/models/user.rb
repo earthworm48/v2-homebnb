@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness:true
 
   has_many :authentications, :dependent => :destroy, foreign_key: 'user_id'
-  
+  has_many :listings
   def self.create_with_auth_and_hash(authentication,auth_hash)
 
     create! do |u|
@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
       u.name = auth_hash["info"]["name"]
       u.email = auth_hash["extra"]["raw_info"]["email"]
       u.image_url = auth_hash['info']['image']
+      u.location = auth_hash['info']['location']
       u.password = '12345'
       u.authentications<<(authentication)
 

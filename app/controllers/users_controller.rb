@@ -21,6 +21,15 @@ class UsersController < Clearance::UsersController
     end
   end
 
+  def show
+    # byebug
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:format])
+  end
+
 	private
 
 	def redirect_signed_in_users

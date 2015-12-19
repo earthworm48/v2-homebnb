@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20151219014000) do
     t.string   "url"
     t.string   "image_url",                      default: "/assets/user-pic.png"
     t.string   "authentications"
+    t.string   "location"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"
