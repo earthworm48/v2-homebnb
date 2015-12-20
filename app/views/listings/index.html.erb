@@ -1,4 +1,5 @@
 <div class="container">
+	<h1>All Listing</h1>
 	<div class="row">
 	<% @listings.each do |listing|%>
 		
@@ -10,10 +11,11 @@
 					<% else %>
 						<%= image_tag("user-pic.png",class:"panel-image")%>
 					<% end %>
+					<img src="<%=listing.user.image_url%>" class="panel-user-img img-circle">
 				</div>
 
 				<div class="panel-footer">
-					<%= listing.name%>
+					<%=link_to listing.name, listing%>
 				</div>
 			</div>
 		</div>

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy, foreign_key: 'user_id'
   has_many :listings
+  has_many :bookings
+  
   def self.create_with_auth_and_hash(authentication,auth_hash)
 
     create! do |u|

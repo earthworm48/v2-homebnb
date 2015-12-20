@@ -1,73 +1,151 @@
 <div class="image-div container">
 
-	<% if @listing.avatars?%>
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-	  <!-- Indicators -->
-	  <ol class="carousel-indicators">
-	  <%for i in 0..@listing.avatars.count - 1 %>
-	    <li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
-	  <%end%>
-	  </ol>
+  <% if @listing.avatars?%>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <%for i in 0..@listing.avatars.count - 1 %>
+          <li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
+          <%end%>
+      </ol>
 
-	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner" role="listbox">   
-	    <%@listing.avatars.each_with_index do |avatar, index|%>
-	      <div class="item <%= 'active' if index == 0%>">
-					<%=image_tag avatar %>
-				</div>
-			<%end%>
-	  </div>
-	  <!-- Left and right controls -->
-	  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-	    <span class="sr-only">Previous</span>
-	  </a>
-	  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-	    <span class="sr-only">Next</span>
-	  </a>
-	</div>
-<%end%>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <%@listing.avatars.each_with_index do |avatar, index|%>
+          <div class="item <%= 'active' if index == 0%>">
+            <%=image_tag avatar %>
+          </div>
+          <%end%>
+      </div>
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <%end%>
 </div>
 
 <div class="container">
-	<div class="row">
-		<div class="col-sm-3">
-			<div class='center-img'>
-			<%= image_tag(@listing.user.image_url, class:"img-circle",style:"align:center;")%>
-			</div>
-		</div>
-		<div class="col-sm-9">
-			<h2><strong><%= @listing.name%></strong></h2>
-			<h4><i><%= @listing.city %></h4>
-			<h5><i><%= @listing.address %></h5>
-			<div class="row">
-				<div class='col-sm-3'>
-					<%= image_tag("no_of_guest")%>
-					<p><%= @listing.no_of_guest%> guest(s)</p>
-				</div>
-				<div class='col-sm-3'>
-					<%= image_tag("room_type")%>
-					<p><%= @listing.room_type%></p>
-				</div>
-				<div class='col-sm-3'>
-					<%= image_tag("smoker")%>
-					<p> smoker tag </p>
-				</div>
-				<div class='col-sm-3'>
-				</div>
-			</div>
-		</div>
-	</div>
-<div class="container">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h4>RM <%= @listing.price_per_night%> per night</h4>
-		</div>
-		<div class="panel-body">
-			<%= @listing.description%>
-		</div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class='center-img'>
+        <img src="<%=@listing.user.image_url%>" class="img-circle img-show" style="align:center;">
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <h2><strong><%= @listing.name%></strong></h2>
+      <h4><i><%= @listing.city %></h4>
+      <h5><i><%= @listing.address %></h5>
+      <div class="row">
+        <div class='col-sm-3'>
+          <%= image_tag("no_of_guest")%>
+            <p>
+              <%= @listing.no_of_guest%> guest(s)</p>
+        </div>
+        <div class='col-sm-3'>
+          <%= image_tag("room_type")%>
+            <p>
+              <%= @listing.room_type%>
+            </p>
+        </div>
+        <div class='col-sm-3'>
+          <%= image_tag("smoker")%>
+            <p> smoker tag </p>
+        </div>
+        <div class='col-sm-3'>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>RM <%= @listing.price_per_night%> per night</h4>
+      </div>
+      <div class="panel-body">
+        <div class="container">
+          <%= @listing.description%>
+        </div>
+      </div>
+
+      <% if current_user == @listing.user%>
+        <div class="panel-footer">
+          <%=link_to "Edit the Listing", edit_listing_path ,class:"btn btn-default"%>
+            <%= link_to "Delete Listing", @listing, method: :delete ,class:"btn btn-default"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container booking-container">
+		<div class="panel panel-default">
+      <div class="panel-heading">
+      <strong>Make Your Booking!</strong>
+      </div>
+			<div class="panel-body">
+        <div class="row">
+				<%= form_for @booking do |f| %>  
+
+          <div class="col-sm-4">       
+            <div class="booking-input">
+              <%= f.label :start_date %><br>
+              <%= f.text_field :start_date %>
+            </div>
+          </div>
+          
+          <div class="col-sm-4">  
+            <div class="booking-input">
+              <%= f.label :end_date %><br>
+              <%= f.text_field :end_date %>
+            </div>
+          </div>
+          
+          <div class="col-sm-4">  
+            <div class="booking-input">
+              <%= f.label :no_of_guest %><br>
+              <%= f.select :no_of_guest, (1..16), :style => "width:100%;"%>
+            </div>
+          </div>
+          
+          <div>
+            <%=f.hidden_field :listing_id, :value => @listing.id %>
+
+            <%=f.hidden_field :amount, :value => @listing.price_per_night %>
+          </div>          
+        
+          <div id="dropin">
+          </div>
+
+          <div class="container">
+            <div id="payment-form">
+            </div>
+          </div>
+          
+        </div>
+			</div>
+      <div class="panel-footer">
+        <%= f.submit "Make Your Booking!", class:"btn btn-default" %>
+      <% end %>
+      </div>
+		</div>
 	</div>
+
 </div>
-</div></div>
+
+
+
+
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+
+<script>
+
+braintree.setup("<%=@token %>", "dropin", {
+  container: "payment-form"
+});
+</script>

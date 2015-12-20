@@ -34,6 +34,8 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'# Use ActiveModel ha
 gem "mini_magick"
 gem "fog"
 
+gem 'jquery-ui-rails'
+gem 'braintree'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server

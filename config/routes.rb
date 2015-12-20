@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   resource :sessions, only: [:create]
   resources :users, only: [:edit, :show]
   
-  resources :listings, only: [:index, :new, :create, :show]
-
+  resources :listings
+  resources :bookings, only: [:create]
   # get '/users/:id', :to => 'users#show', :as => :user
   # get '/listings/:id', :to => 'listings#show', :as => :listing
   # omniauth-facebook

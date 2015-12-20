@@ -12,6 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+$(function () {
+    $('#booking_start_date').datepicker({ 
+    	minDate: 0,
+    	onSelect: function(date) {
+    		$('#booking_end_date').datepicker('option','minDate',date);
+    	}
+    });
+    $('#booking_end_date').datepicker({});
+
+
+});
