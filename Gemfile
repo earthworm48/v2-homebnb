@@ -29,7 +29,11 @@ gem 'clearance'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
-# Use ActiveModel has_secure_password
+
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'# Use ActiveModel has_secure_password
+gem "mini_magick"
+gem "fog"
+
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server

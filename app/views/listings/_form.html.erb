@@ -1,0 +1,55 @@
+
+<%= form_for @listing, html: {multipart: true} do |form| %>
+  <div class="form-group">
+    <%=form.label :name%>
+    <%= form.text_field :name, placeholder:"Be clear and descriptive", style:"width:100%;" %>
+  </div>
+  <div class="form-group">
+    <%=form.label :description%>
+    <%= form.text_area :description, placeholder:"Tell travelers what you love about the space", style:"width:100%;" %>
+  </div>  
+  <div class="form-group">
+    <%=form.label :city%>
+    <%= form.text_field :city, placeholder:"Your city", style:"width:100%;" %>
+  </div>         
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, placeholder:"Address", style:"width:100%;" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :no_of_guest %>
+    <%= form.select :no_of_guest, (1...16)%>
+  </div> 
+  <div class="form-group">
+    <%= form.label :room_type %><br>
+    <div class="row">
+      <div class="col-sm-4">        
+        <%= form.radio_button :room_type, 'private room'%>
+        <%= form.label 'private room' %>
+      </div>
+    <div class="col-sm-4">
+      <%= form.radio_button :room_type, 'shared room'%>
+      <%= form.label 'shared room' %>
+    </div>
+    <div class="col-sm-4">
+      <%= form.radio_button :room_type, 'entire suite'%>
+      <%= form.label 'entire suite' %>
+    </div>
+  </div> 
+  <br>
+  <div class="form-group">
+    <%= form.label :price_per_night %>
+    <%= form.text_field :price_per_night, placeholder:"RM XXX", style:"width:100%;" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :images %>
+    <%= form.file_field :avatars, multiple: true %>
+  </div>
+  
+
+  <div class="form-group">
+    <%= form.submit("Done",class:"btn btn-default btn-block") %>
+  </div>
+
+<% end%>

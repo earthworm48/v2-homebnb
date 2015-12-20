@@ -14,6 +14,33 @@
  *= require_self
  */
 
+ .panel-image{
+    width:100%;
+ }
+
+ .panel-body{
+    padding:0px;
+ }
+
+ .center-img{
+    text-align:right;
+ }
+
+#listing_no_of_guest{
+    width:100%;
+}
+
+.dropdown-menu{
+    width:227px;
+}
+
+.dropdown-menu li a{
+    padding:15px;
+    color: #565A5C;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
 #homepage-pic{
     width:100%;
     height:auto;
@@ -106,6 +133,13 @@ body{
   height:50px; 
 }
 
+#homepage-btn{
+    font-family:"san-serif";
+    font-size:16px;
+    font-weight:700;
+    padding:10px;
+}
+
 #footer-text{
     font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height:1.43;
@@ -115,6 +149,7 @@ body{
 
 footer{
     background:url("footer.jpg");
+    width:100%;
 }
 
 #user-pic{

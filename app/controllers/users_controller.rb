@@ -27,7 +27,7 @@ class UsersController < Clearance::UsersController
   end
 
   def edit
-    @user = User.find(params[:format])
+    @user = User.find(params[:id])
   end
 
 	private

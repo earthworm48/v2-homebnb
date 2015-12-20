@@ -1,0 +1,73 @@
+<div class="image-div container">
+
+	<% if @listing.avatars?%>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	  <!-- Indicators -->
+	  <ol class="carousel-indicators">
+	  <%for i in 0..@listing.avatars.count - 1 %>
+	    <li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
+	  <%end%>
+	  </ol>
+
+	  <!-- Wrapper for slides -->
+	  <div class="carousel-inner" role="listbox">   
+	    <%@listing.avatars.each_with_index do |avatar, index|%>
+	      <div class="item <%= 'active' if index == 0%>">
+					<%=image_tag avatar %>
+				</div>
+			<%end%>
+	  </div>
+	  <!-- Left and right controls -->
+	  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+	</div>
+<%end%>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3">
+			<div class='center-img'>
+			<%= image_tag(@listing.user.image_url, class:"img-circle",style:"align:center;")%>
+			</div>
+		</div>
+		<div class="col-sm-9">
+			<h2><strong><%= @listing.name%></strong></h2>
+			<h4><i><%= @listing.city %></h4>
+			<h5><i><%= @listing.address %></h5>
+			<div class="row">
+				<div class='col-sm-3'>
+					<%= image_tag("no_of_guest")%>
+					<p><%= @listing.no_of_guest%> guest(s)</p>
+				</div>
+				<div class='col-sm-3'>
+					<%= image_tag("room_type")%>
+					<p><%= @listing.room_type%></p>
+				</div>
+				<div class='col-sm-3'>
+					<%= image_tag("smoker")%>
+					<p> smoker tag </p>
+				</div>
+				<div class='col-sm-3'>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>RM <%= @listing.price_per_night%> per night</h4>
+		</div>
+		<div class="panel-body">
+			<%= @listing.description%>
+		</div>
+
+	</div>
+</div>
+</div></div>
