@@ -14,9 +14,107 @@
  *= require_self
  */
 
+#homepage-pic{
+    width:100%;
+    height:auto;
+    overflow: hidden;
+    text-align:center;
+}
+
+.section-pic{
+    height:100px;
+}
+
+.image-div{
+    position:relative;
+    height:500px;
+    width:100%;
+    overflow:hidden;
+    text-align:center;
+}
+
+.image-text  {
+    position:absolute;
+    top:110px;
+    text-align:center;
+    color:white;
+    background:rgba(0,0,0,0.5);
+
+}
+
+
+.image-div > .image-text > div > h1{
+    text-align:center;
+    font-size: 60px;
+    font-weight: 700;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.image-div > .image-text > div {
+    padding:20px;
+}
+
+
+.section-pic{
+    height:225px;
+    width:100%;    
+}
+
+.container .row .section-image-div{
+    text-align:center;
+    position:relative;    
+}
+
+.container .row .section-image-div div h3{
+    display:inline-table;
+    vertical-align:middle;
+    position:absolute;
+
+    top:50px;
+    left:15px;
+    margin:auto;
+    text-align:center;
+    background:rgba(0,0,0,0.5);
+
+    line-height:100%;
+
+    color:white;
+
+    text-transform:uppercase;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding:20px;
+}
+
+.section-intro{
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+body{
+    padding-top:0px;
+}
+
 .navbar-default{
     background-color:transparent;
     border-color:transparent;
+}
+
+.img-footer{
+  width:50px;
+  height:50px; 
+}
+
+#footer-text{
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height:1.43;
+    font-weight:bold;
+    color:white;
+}
+
+footer{
+    background:url("footer.jpg");
 }
 
 #user-pic{
