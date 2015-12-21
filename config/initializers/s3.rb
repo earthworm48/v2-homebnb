@@ -5,5 +5,6 @@ CarrierWave.configure do |config|
       :aws_secret_access_key  => ENV["amazon_secret"],
       :region                 => 'ap-southeast-1' # Change this for different AWS region. Default is 'us-east-1'
   }
-  config.fog_directory  = "homebnb"
+  # Please take note of the region problem or else you will get the SSL:Open Error
+  config.fog_directory  = "v3-homebnb"
 end
