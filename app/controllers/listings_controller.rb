@@ -1,3 +1,4 @@
+require 'date'
 class ListingsController < ApplicationController
 
 	def index
@@ -20,6 +21,15 @@ class ListingsController < ApplicationController
 	def show
 		@listing = Listing.find(params[:id])
 		@booking = Booking.new
+		
+		@unavailable_dates = []
+		@listing.bookings.each do |booking|
+			end_date = booking.end_date.to_date
+			start_date = booking.start_date.to_date
+			@unavailable_dates << (start_date..end_date).map{|date| date.strftime("%d-%m-%Y")}
+		end
+		@unavailable_dates.flatten!
+		# byebug
 		@token = generate_client_token
 	end
 

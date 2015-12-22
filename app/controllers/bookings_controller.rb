@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
 		@booking.destroy
 		flash[:success] = "Booking no.#{@booking.id}: Booking to #{@booking.listing.name} from #{@booking.start_date} to #{@booking.end_date} has successfully been destroyed!"
 
-		redirect_to user_bookings_path(current_user)
+		redirect_to current_user
 	end
 
 	private

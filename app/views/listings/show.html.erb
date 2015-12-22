@@ -1,3 +1,4 @@
+
 <div class="image-div container">
 
   <% if @listing.avatars?%>
@@ -83,6 +84,9 @@
     </div>
   </div>
 
+
+  <p id="unavailable_dates" data-unavailable-date="<%= @unavailable_dates%>"></p>
+  
   <div class="container booking-container">
 		<div class="panel panel-default">
       <div class="panel-heading">
@@ -141,7 +145,7 @@
 
 
 
-<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+
 
 <script>
 
