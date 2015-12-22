@@ -17,6 +17,8 @@ class BookingsController < ApplicationController
 		
 		if result.success?
 		  flash[:success] = "success!: #{result.transaction.id}"
+		  # byebug
+		  BookingMailer.booking_email(@booking.user, @listing.user, @booking.id).deliver_now
 		elsif result.transaction
 		  flash[:danger] = "Error processing transaction:
 		  code: #{result.transaction.processor_response_code}
