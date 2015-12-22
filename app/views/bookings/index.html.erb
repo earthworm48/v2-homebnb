@@ -1,0 +1,27 @@
+<div class="container">
+<h1> This is <%=@user.name%>'s booking </h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th> Listing's name </th>
+				<th> Start Date </th>
+				<th> End Date </th>
+				<th> Delete Your Booking</th>
+			</tr>
+		</thead>
+
+		<% unless @bookings.nil? %>	
+			<% @bookings.each do |booking| %>
+				<tbody>
+					<tr>
+						<td><%= link_to booking.listing.name, booking.listing %></td>
+						<td><%= booking.start_date %></td>
+						<td><%= booking.end_date %></td>
+						<td><%= link_to "Delete", booking, method: :delete%></td>
+					</tr>
+				</tbody>
+			<% end %>
+		<% end %>
+</table>
+</div>

@@ -34,7 +34,7 @@
   <div class="row">
     <div class="col-sm-3">
       <div class='center-img'>
-        <img src="<%=@listing.user.image_url%>" class="img-circle img-show" style="align:center;">
+        <%= link_to image_tag(@listing.user.image_url, class:"img-circle img-show", style:"align:center;"), @listing.user %>
       </div>
     </div>
     <div class="col-sm-9">

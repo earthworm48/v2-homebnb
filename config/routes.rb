@@ -18,11 +18,13 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :show]
   
   resources :listings
-  resources :bookings, only: [:create]
+  resources :bookings, only: [:create, :edit, :destroy]
   # get '/users/:id', :to => 'users#show', :as => :user
   # get '/listings/:id', :to => 'listings#show', :as => :listing
   # omniauth-facebook
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  get '/search', to: 'listings#search'
+
 
   # clearance
 

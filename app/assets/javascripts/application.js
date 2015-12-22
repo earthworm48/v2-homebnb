@@ -11,13 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
-//= require_tree .
-//= require bootstrap-sprockets
 
-$(function () {
+//= require bootstrap-sprockets
+//= require autocomplete
+
+//= require turbolinks
+
+$( document ).ready(function(){
     $('#booking_start_date').datepicker({ 
     	minDate: 0,
     	onSelect: function(date) {
@@ -25,6 +28,4 @@ $(function () {
     	}
     });
     $('#booking_end_date').datepicker({});
-
-
 });

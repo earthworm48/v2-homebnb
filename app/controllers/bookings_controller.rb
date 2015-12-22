@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
 		@booking = Booking.new(booking_params)
 		# byebug
 		@listing = @booking.listing
+
 		nonce = params[:payment_method_nonce]
 
 		if @booking.save!
@@ -26,7 +27,20 @@ class BookingsController < ApplicationController
 		  @booking.destroy
 		end	
 
-		redirect_to @listing
+		redirect_to @booking.user
+	end
+
+	def edit
+		# byebug
+		@booking = Booking.find(params[:id])
+	end
+
+	def destroy
+		@booking = Booking.find(params[:id])
+		@booking.destroy
+		flash[:success] = "Booking no.#{@booking.id}: Booking to #{@booking.listing.name} from #{@booking.start_date} to #{@booking.end_date} has successfully been destroyed!"
+
+		redirect_to user_bookings_path(current_user)
 	end
 
 	private

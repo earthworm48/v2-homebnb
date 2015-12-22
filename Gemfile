@@ -36,6 +36,11 @@ gem "fog"
 
 gem 'jquery-ui-rails'
 gem 'braintree'
+
+gem 'will_paginate', '~> 3.0.6'
+gem 'searchkick'
+
+gem 'jquery-turbolinks'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server

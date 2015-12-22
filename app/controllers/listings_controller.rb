@@ -1,7 +1,6 @@
 class ListingsController < ApplicationController
 
 	def index
-		# byebug
 		@listings = Listing.all
 	end
 
@@ -41,6 +40,32 @@ class ListingsController < ApplicationController
 		@listing.destroy
 		redirect_to listings_path
 	end
+
+	def search
+		respond_to do |format|
+
+			# when the 'search' button is clicked
+			format.html do
+				@listings = Listing.search(params[:term], fields: ["city", "address"], mispellings: {below: 5})
+				# byebug/
+				if @listings.blank?
+					# byebug
+					@error = "No result is found"
+				end
+				render :template => "listings/index"
+			end
+
+			# when user key in things
+			format.json do
+				@cities = Listing.search(params[:term], fields: ["city"], mispellings: {below: 5})
+				@cities = @cities.map(&:city)
+				@address = Listing.search(params[:term], fields: ["address"], mispellings: {below: 5})
+				@address = @address.map(&:address)
+				render json: (@cities + @address).uniq
+			end
+		end
+	end
+
 
 	private
 	def listing_params

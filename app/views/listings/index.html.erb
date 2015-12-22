@@ -1,6 +1,7 @@
 <div class="container">
 	<h1>All Listing</h1>
-	<div class="row">
+	<h3><i><%= @error if @error %></h3>
+	<div class="row listing-index-row">
 	<% @listings.each do |listing|%>
 		
 		<div class="col-sm-4">
@@ -11,7 +12,7 @@
 					<% else %>
 						<%= image_tag("user-pic.png",class:"panel-image")%>
 					<% end %>
-					<img src="<%=listing.user.image_url%>" class="panel-user-img img-circle">
+					<%= link_to image_tag(listing.user.image_url,class:"panel-user-img img-circle"), listing.user %>
 				</div>
 
 				<div class="panel-footer">
