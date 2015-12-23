@@ -3,7 +3,6 @@ $( document ).on('ready page:load',function(){
 
 		FB.login(function(response)
 		{
-			debugger
 		  if (response.session)
 		  {
 		    // user successfully logged in
