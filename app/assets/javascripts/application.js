@@ -14,10 +14,8 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
-
 //= require bootstrap-sprockets
 //= require autocomplete
-
 //= require turbolinks
 
 $( document ).on('ready page:load',function(){
@@ -53,5 +51,9 @@ $( document ).on('ready page:load',function(){
     $('#booking_end_date').datepicker({
     	dateFormat: "dd-mm-yy",
     	beforeShowDay: unavailable,
+    });
+
+    $('#form-submit').on('click', function() {
+        $('form').submit();
     });
 });

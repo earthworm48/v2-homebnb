@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+	
 	def create
 		# byebug
 		@booking = Booking.new(booking_params)

@@ -94,7 +94,7 @@
       </div>
 			<div class="panel-body">
         <div class="row">
-				<%= form_for @booking do |f| %>  
+				<%= form_for :booking, url:'/bookings', method: 'post' do |f| %>  
 
           <div class="col-sm-4">       
             <div class="booking-input">
@@ -133,10 +133,10 @@
           
         </div>
 			</div>
-      <div class="panel-footer">
-        <%= f.submit "Make Your Booking!", class:"btn btn-default" %>
-      <% end %>
-      </div>
+        <div class="panel-footer">
+          <%= f.submit "Make Your Booking!", id: 'form-submit', class: "btn btn-default" %>
+        </div>
+      <% end %>  
 		</div>
 	</div>
 
