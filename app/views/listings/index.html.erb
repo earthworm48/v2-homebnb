@@ -1,26 +1,18 @@
 <div class="container">
 	<h1>All Listing</h1>
 	<h3><i><%= @error if @error %></h3>
-	<div class="row listing-index-row">
+	<section id="pinBoot">
 	<% @listings.each do |listing|%>
 		
-		<div class="col-sm-4">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<% unless listing.avatars.length == 0 %>
-						<%= image_tag(listing.avatars[0],class:"panel-image")%>
-					<% else %>
-						<%= image_tag("user-pic.png",class:"panel-image")%>
-					<% end %>
-					<%= link_to image_tag(listing.user.image_url,class:"panel-user-img img-circle"), listing.user %>
-				</div>
-
-				<div class="panel-footer">
-					<%=link_to listing.name, listing%>
-				</div>
-			</div>
-		</div>
 		
+			<article class="white-panel">
+				<%= image_tag(listing.avatars[0], class: "img-pinBoot") %>
+				<h4><%=link_to listing.name, listing%></h4>
+				<p></p>
+			</article>
+			
 	<% end %>
-	</div>
+	</section>	
 </div>
+
+
