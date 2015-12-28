@@ -17,7 +17,9 @@
 //= require bootstrap-sprockets
 //= require autocomplete
 //= require pinBoot
+//= require fb_popup
 //= require turbolinks
+
 
 $( document ).on('ready page:load',function(){
 

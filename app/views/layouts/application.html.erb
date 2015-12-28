@@ -86,9 +86,8 @@
     <div class='modal-content'>
       <div class='modal-body'>
         <div class="panel-padding panel-body">
-          <div id="fb-root"></div>
-          <button><fb:login-button show-faces='false' scope='email,publish_stream,user_birthday,user_location'></fb:login-button></button>
-          <%= link_to 'Log In With Facebook', '/auth/facebook',class:"btn btn-primary btn-fb btn-block fb-popup" %>
+          
+          <%= link_to 'Log In With Facebook', '/auth/facebook',class:"btn btn-primary btn-fb btn-block fb-popup", "data-dismiss" => "modal" %>
           <hr>
            <%= form_for :session, url: sessions_path do |form| %>  
             <div class="form-group">
@@ -120,7 +119,9 @@
     <div class="modal-content">
       <div class="modal-body">
         <div class="panel-padding panel-body">
-          <%= link_to 'Sign Up With Facebook', '/auth/facebook',class:"btn btn-primary btn-fb btn-block fb-popup", "data-dismiss" => "modal" %>
+
+         <%= link_to 'Sign Up With Facebook', '/auth/facebook',class:"btn btn-primary btn-fb btn-block fb-popup", "data-dismiss" => "modal" %>
+
           <hr>
 
             <%= form_for User.new do |form|%>
