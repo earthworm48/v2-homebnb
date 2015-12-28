@@ -140,6 +140,21 @@
 		</div>
 	</div>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
+      </div>
+      <div class="col-sm-6">
+        <h2>Nearby Location</h2>
+        <ul>
+          <% for listing in @listing.nearbys(10) %>
+            <li><%= link_to listing.address, listing %> (<%= listing.distance.round(2) %> miles)</li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 

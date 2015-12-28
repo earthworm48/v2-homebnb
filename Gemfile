@@ -47,6 +47,8 @@ gem 'gon'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+
+gem 'geocoder'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
