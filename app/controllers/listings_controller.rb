@@ -19,6 +19,7 @@ class ListingsController < ApplicationController
 	end
 
 	def show
+		# @listings = Listing.all
 		@listing = Listing.find(params[:id])
 		@booking = Booking.new
 		
@@ -36,6 +37,7 @@ class ListingsController < ApplicationController
 	def edit
 		@listing = Listing.find(params[:id])
 	end
+
 	def update
 		@listing = Listing.find(params[:id])
 		if @listing.update(listing_params)

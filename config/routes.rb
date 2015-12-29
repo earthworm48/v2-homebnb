@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   # omniauth-facebook
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   get '/search', to: 'listings#search'
-
+  
   require 'sidekiq/web'
   mount Sidekiq::Web, at: '/sidekiq'
 

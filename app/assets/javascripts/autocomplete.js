@@ -4,3 +4,4 @@ $( document ).on('ready page:load',function(){
 		source: "/search"
 	});  
 });
+

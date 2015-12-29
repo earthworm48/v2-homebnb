@@ -122,19 +122,38 @@
 
             <%=f.hidden_field :amount, :value => @listing.price_per_night %>
           </div>          
-        
-          <div id="dropin">
+
+          <p id = "price-per-night" data-price-per-night = "<%= @listing.price_per_night %>" ></p>
+
+          <div class="container">
+            <div id="booking-details" style="display: none;">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td><span id="no_of_days"></span> nights x <%= @listing.price_per_night%></td>
+                    <td id="total"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Service Charge</strong></td>
+                    <td id="service-charge"></td>
+                  </tr>
+                    <td>Total</td>
+                    <td id="total-charge"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <div class="container">
-            <div id="payment-form">
+            <div id="dropin">
             </div>
           </div>
           
         </div>
 			</div>
         <div class="panel-footer">
-          <%= f.submit "Make Your Booking!", id: 'form-submit', class: "btn btn-default" %>
+          <%= f.submit "Pay It", class: "btn btn-default" %>
         </div>
       <% end %>  
 		</div>
@@ -146,26 +165,23 @@
       <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
       </div>
       <div class="col-sm-6">
-        <h2>Nearby Location</h2>
-        <ul>
-          <% for listing in @listing.nearbys(10) %>
-            <li><%= link_to listing.address, listing %> (<%= listing.distance.round(2) %> miles)</li>
-          <% end %>
-        </ul>
+        <% unless @listing.nearbys(10).nil? %>
+          <h2>Nearby Location</h2>
+          <ul>
+            <% for listing in @listing.nearbys(10)%>
+              <li><%= link_to listing.address, listing %> (<%= listing.distance.round(2) %> miles)</li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-
-
 <script>
 $( document ).on('ready page:load',function(){
-  braintree.setup("<%=@token %>", "dropin", {
-    container: "payment-form"
+  braintree.setup("<%= @token %>", "dropin", {
+    container: "dropin"
   });
 });
 </script>

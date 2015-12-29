@@ -1,24 +1,20 @@
 class BookingsController < ApplicationController
 	
 	def create
-		# byebug
 		@booking = Booking.new(booking_params)
 		# byebug
 		@listing = @booking.listing
 
-		nonce = params[:payment_method_nonce]
-
+		byebug
 		if @booking.save!
-			# render template: "bookings/payment"
 			result = Braintree::Transaction.sale(
-			  :amount => "100.00",
-			  :payment_method_nonce => nonce
+			  :amount => @booking.listing.price_per_night.to_i,
+			  :payment_method_nonce => params[:payment_method_nonce]
 			)	
 		end
 		
 		if result.success?
 		  flash[:success] = "success!: #{result.transaction.id}"
-		  # byebug
 		  BookingMailer.booking_email(@booking.user, @listing.user, @booking.id).deliver_now
 		elsif result.transaction
 		  flash[:danger] = "Error processing transaction:

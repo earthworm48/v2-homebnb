@@ -4,7 +4,7 @@
   <title>HomeBnB</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'https://js.braintreegateway.com/v2/braintree.js', 'data-turbolinks-track' => true %>
+   <%= javascript_include_tag 'https://js.braintreegateway.com/v2/braintree.js', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -40,18 +40,16 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left" action="/search" method="get" role="search">
-        <div class="form-group">
-          <%= text_field_tag :term, params[:term],placeholder:"Put the location here" %>
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form>
+
+      <%= form_for Listing.new, method: :get, :html => {:class => "navbar-form navbar-left"}, :url => search_path, role: "search" do |f| %>
+        <%= text_field_tag :term, params[:term],placeholder:"Put the location here" %>
+        <%= f.submit 'search', :class => 'btn btn-default' %>
+      <% end %>
 
       <ul class="nav navbar-nav navbar-right">
 
 
       <% if current_user %>
-
       <li>
 
           <%= link_to image_tag(current_user.image_url, class:"img-circle",id:"user-pic"), current_user , class:"img-circle-a"%>
