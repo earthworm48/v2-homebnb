@@ -20,22 +20,25 @@
     <%= form.label :no_of_guest %>
     <%= form.select :no_of_guest, (1...16)%>
   </div> 
+
   <div class="form-group">
     <%= form.label :room_type %><br>
-    <div class="row">
-      <div class="col-sm-4">        
-        <%= form.radio_button :room_type, 'private room'%>
-        <%= form.label 'private room' %>
+
+      <div class="btn-group" data-toggle="buttons">
+      <%= label_tag(:room_home, "Entire Home", class: "btn btn-default inactive btn-sm", autocomplete: "off") do %> 
+        <%= radio_button "listing" ,:room_type, "Entire home"%>
+      Entire Home
+      <%end%>
+      <%= label_tag(:room_private, "Private room", class: "btn btn-default inactive btn-sm") do %> 
+        <%= radio_button "listing", :room_type, "Private room" %>
+      Private Home
+      <%end%>
+      <%= label_tag(:room_shared, "Shared room", class: "btn btn-default inactive btn-sm") do %> 
+      Shared Room
+        <%= radio_button "listing", :room_type, "Shared room"%>
+      <%end%>
       </div>
-    <div class="col-sm-4">
-      <%= form.radio_button :room_type, 'shared room'%>
-      <%= form.label 'shared room' %>
-    </div>
-    <div class="col-sm-4">
-      <%= form.radio_button :room_type, 'entire suite'%>
-      <%= form.label 'entire suite' %>
-    </div>
-  </div> 
+
   <br>
   <div class="form-group">
     <%= form.label :price_per_night %>
