@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
       u.last_name = auth_hash["info"]["last_name"]
       u.name = auth_hash["info"]["name"]
       u.email = auth_hash["extra"]["raw_info"]["email"]
-      u.image_url = auth_hash['info']['image']
+      u.image_url = auth_hash['info']['image'] + "?type=large"
       u.location = auth_hash['info']['location']
       u.password = '12345'
       u.authentications<<(authentication)
