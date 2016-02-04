@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap-sprockets
+
 //= require autocomplete
 //= require pinBoot
 //= require fb_popup
