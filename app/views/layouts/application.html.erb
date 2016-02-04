@@ -8,68 +8,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to image_tag("logo.jpg", height:50), root_path, class:"pull-left"%>
 
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-
-      <%= form_for Listing.new, method: :get, :html => {:class => "navbar-form navbar-left"}, :url => search_path, role: "search" do |f| %>
-        <%= text_field_tag :term, params[:term],placeholder:"Put the location here" %>
-        <%= f.submit 'search', :class => 'btn btn-default' %>
-      <% end %>
-
-      <ul class="nav navbar-nav navbar-right">
-
-
-      <% if current_user %>
-      <li>
-
-          <%= link_to image_tag(current_user.image_url, class:"img-circle",id:"user-pic"), current_user , class:"img-circle-a"%>
-
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= current_user.email%> <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-          <li><%= link_to "Add Listing", new_listing_path%></li>
-          <li><%= link_to "All Listing", listings_path %></li>
-          <li><%= link_to "My Profile", current_user %></li>
-
-          <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
-        </ul>
-      </li>
-      <%else%>
-        <li><%=link_to 'Sign Up', '#sign_up_modal', "data-toggle" => 'modal'%></li>
-        <li><%=link_to 'Login', '#log_in_modal', "data-toggle" =>'modal' %></li>     
-      <%end%>
-</nav>
+<%= render 'layouts/header' %>
 
 <div class='container'>
   <% flash.each do |key, value| %>
@@ -79,70 +19,8 @@
   <% end %>
 </div>
 
-<div class='modal fade' id="log_in_modal" role='dialog'>
-  <div class='modal-dialog'>
-    <div class='modal-content'>
-      <div class='modal-body'>
-        <div class="panel-padding panel-body">
-          
-          <%= link_to 'Log In With Facebook', '/auth/facebook',class:"btn btn-primary btn-fb btn-block fb-popup", "data-dismiss" => "modal" %>
-          <hr>
-           <%= form_for :session, url: sessions_path do |form| %>  
-            <div class="form-group">
-              <%= form.text_field :email, type: 'email',placeholder:"Email address" ,style:"width:100%;"%>
-            </div>
-            <div class="form-group">
-               <%= form.password_field :password, placeholder:"Password", style:"width:100%;"%>
-               <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-            </div>
-            <div class="form-group">
-               <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-            </div>
-            <div class="checkbox">
-             <label>
-             <input type="checkbox"> keep me logged-in
-             </label>
-            </div>
-          <%end%>
-          <hr>
-          Don't have an account? <%=link_to 'Sign up', '#sign_up_modal', "data-toggle" =>'modal',"data-dismiss" => "modal"%>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="sign_up_modal" role='dialog'>
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="panel-padding panel-body">
-
-         <%= link_to 'Sign Up With Facebook', '/auth/facebook',class:"btn btn-primary btn-fb btn-block fb-popup", "data-dismiss" => "modal" %>
-
-          <hr>
-
-            <%= form_for User.new do |form|%>
-              <div class="form-group">
-                <%= form.text_field :name, placeholder:"Name", style:"width:100%;" %>
-              </div>         
-              <div class="form-group">
-                <%= form.text_field :email, type: 'email', placeholder:"Email", style:"width:100%;" %>
-              </div>
-
-              <div class="form-group">
-                <%= form.password_field :password, placeholder:"Password", style:"width:100%;" %>
-              </div>
-              <div class="form-group">
-               <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-              </div>
-            <% end %>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'layouts/log_in' %>
+<%= render 'layouts/sign_up'%>
 
 
 <%= yield %>

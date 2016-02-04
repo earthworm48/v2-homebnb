@@ -30,6 +30,10 @@
     padding-bottom: 0px;
 }
 
+.navbar-left{
+    margin-left:20%;
+}
+
 
 .booking-container .panel .panel-body .row .col-sm-4 label{
   
@@ -81,7 +85,11 @@
 }
 
 .dropdown-menu{
-    width:227px;
+    width:100%;
+}
+
+.dropdown{
+    position:relative;
 }
 
 .dropdown-menu li a{
