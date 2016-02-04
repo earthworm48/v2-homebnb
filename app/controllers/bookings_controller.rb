@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
 		# byebug
 		@listing = @booking.listing
 
-		byebug
+		
 		if @booking.save!
 			result = Braintree::Transaction.sale(
 			  :amount => @booking.listing.price_per_night.to_i,
